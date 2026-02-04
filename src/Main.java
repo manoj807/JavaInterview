@@ -19,7 +19,8 @@ public class Main {
         Integer sum = StreamsUtils.getSum(numbers);
 
         System.out.println("Max: " + maxNum);
-        System.out.println("Min: " + minNum);
+        System.out.println("Min:    dfedd " + minNum    );
+
         System.out.println("Sum: " + sum);
         List<Integer> duplicateElement = StreamsUtils.findDuplicateElement(numbers);
         System.out.println("Squares: " + duplicateElement);
