@@ -346,6 +346,8 @@ public class StreamsUtils
         int totalLen = lss.stream().mapToInt(String::length).reduce(0, Integer::sum);
         //int totalLen = lss.stream().mapToInt(String::length).sum();
 
+        Map<String, Integer> mmmm=lss.stream().collect(Collectors.toMap(Function.identity(), String::length));
+
         String string=lss.stream().max(Comparator.comparing(w -> w.replaceAll("[^aeiouAEIOU]", "").length())).orElse(null);
 
         String stringww=lss.stream().max(Comparator.comparingInt(w -> w.replaceAll("[^aeiouAEIOU]", "").length())).orElse(null);
@@ -369,6 +371,7 @@ public class StreamsUtils
 
 
 
+
         List<String> strNums = List.of("10", "20", "30");
         List<Integer> intNums = strNums.stream()
                 .map(Integer::parseInt)
@@ -378,6 +381,9 @@ public class StreamsUtils
         List<Integer> l1 = List.of(1, 2, 3, 4);
         List<Integer> l2 = List.of(2, 3, 5);
         List<Integer> l3 = List.of(3, 4, 2);
+
+        int sum = l1.stream().filter(n -> n % 2 == 0).mapToInt(i-> i.intValue()).sum();
+
 
 
 
@@ -459,7 +465,7 @@ public class StreamsUtils
                         .mapToObj(j -> s.substring(i, j))
                         .forEach(System.out::println));
 
-        int sum = IntStream.rangeClosed(1, 5).sum();
+       // int sum = IntStream.rangeClosed(1, 5).sum();
 
         double avg = l11.stream().mapToInt(i -> i).average().orElse(0);
         int sum11 = l11.stream().filter(n -> n % 2 == 0)
@@ -488,6 +494,15 @@ public class StreamsUtils
                 IntStream.range(i + 1, s.length() + 1)
                         .mapToObj(j -> s.substring(i, j))
                         .forEach(item-> list.add(item)));
+
+
+        IntStream.range(0, list.size())
+                .filter(i -> i % 2 == 0)
+                .mapToObj(i-> list.get(i))
+                .collect(Collectors.toList());
+
+        List<Object> mixed = List.of(1, "a", 2, "b");
+        mixed.stream().filter(o -> o instanceof Integer).map(i-> (Integer)i).collect(Collectors.toList());
 
 
 

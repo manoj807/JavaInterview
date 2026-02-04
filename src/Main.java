@@ -12,6 +12,7 @@ public class Main {
 
 
         List<Integer> numbers = List.of(1, 5,2, 3,3, 4, 1,4,5);
+        numbers.stream().collect(Collectors.averagingInt(Integer::intValue));
 
         Integer maxNum = StreamsUtils.getMaxNum(numbers);
         Integer minNum = StreamsUtils.getMinNum(numbers);
@@ -85,6 +86,9 @@ public class Main {
         //System.out.println("GCD of " + num1 + " and " + num2 + " is " + StreamsUtils.findGCD(num1, num2));
 
         System.out.println(StreamsUtils.averageOfSquares(List.of(2, 2)));
+        List<Integer> list11 = List.of(2, 3, -4, 5, 16, 17, 19, 20);
+        boolean noneNeg = list11.stream().noneMatch(n -> n < 0);
+        System.out.println("noneNeg:::"+noneNeg);
 
 
 
