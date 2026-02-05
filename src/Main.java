@@ -19,7 +19,7 @@ public class Main {
         Integer minNum = StreamsUtils.getMinNum(numbers);
         Integer sum = StreamsUtils.getSum(numbers);
 
-        System.out.println("Max: " + maxNum);
+        System.out.println("Max:11111 " + maxNum);
         System.out.println("Min:    dfedd " + minNum    );
 
         System.out.println("Sum: " + sum);
