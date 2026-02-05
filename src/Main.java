@@ -12,6 +12,7 @@ public class Main {
 
 
         List<Integer> numbers = List.of(1, 5,2, 3,3, 4, 1,4,5);
+
         numbers.stream().collect(Collectors.averagingInt(Integer::intValue));
 
         Integer maxNum = StreamsUtils.getMaxNum(numbers);
