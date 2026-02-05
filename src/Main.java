@@ -27,6 +27,7 @@ public class Main {
         System.out.println("Squares: " + duplicateElement);
 
         Map.Entry<Character,Long> map = StreamsUtils.mostFrequentCharacter("banana");
+
         System.out.println("mapss: " + map);
 
         List<Integer> evenIndexElements = StreamsUtils.getEvenIndexList(numbers);
