@@ -30,6 +30,7 @@ public class Main {
         System.out.println("mapss: " + map);
 
         List<Integer> evenIndexElements = StreamsUtils.getEvenIndexList(numbers);
+
         System.out.println("evenIndexElements: " + evenIndexElements);
 
         String string = StreamsUtils.firstLimitcharacters("manoj kumar",3);
