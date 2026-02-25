@@ -327,6 +327,8 @@ public class StreamsUtils
 
         String s = "a1b2c3";
 
+      List<Integer> lll=  s.chars().filter(Character::isDigit).mapToObj(i-> Integer.valueOf(String.valueOf(i))).collect(Collectors.toList());
+
         //int total = s.chars().filter(Character::isDigit).map(c -> c - '0').sum();
        // int total = s.chars().filter(Character::isDigit).map(i->Integer.parseInt(String.valueOf((char)i))).sum();
         //int total = s.chars().filter(Character::isDigit).map(i->Integer.valueOf(String.valueOf(i))).sum();
@@ -353,6 +355,11 @@ public class StreamsUtils
         String stringww=lss.stream().max(Comparator.comparingInt(w -> w.replaceAll("[^aeiouAEIOU]", "").length())).orElse(null);
 
     List<Integer> lissss=List.of(1,3,4,5,6);
+
+        int sum = lissss.stream().filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue).sum();
+        int sum11 = lissss.stream().filter(n -> n % 2 == 0)
+                .mapToInt(i->i).sum();
       List<Integer> lsis= IntStream.range(0, lissss.size())
                 .filter(i -> i % 2 == 0)
                 .mapToObj(lissss::get).collect(Collectors.toList());
@@ -382,7 +389,7 @@ public class StreamsUtils
         List<Integer> l2 = List.of(2, 3, 5);
         List<Integer> l3 = List.of(3, 4, 2);
 
-        int sum = l1.stream().filter(n -> n % 2 == 0).mapToInt(i-> i.intValue()).sum();
+        //int sum = l1.stream().filter(n -> n % 2 == 0).mapToInt(i-> i.intValue()).sum();
 
 
 
@@ -468,8 +475,16 @@ public class StreamsUtils
        // int sum = IntStream.rangeClosed(1, 5).sum();
 
         double avg = l11.stream().mapToInt(i -> i).average().orElse(0);
-        int sum11 = l11.stream().filter(n -> n % 2 == 0)
-                .mapToInt(i->i ).sum();
+//        int sum11 = l11.stream().filter(n -> n % 2 == 0)
+//                .mapToInt(i->i ).sum();
+
+
+        List<String> names11 = Arrays.asList("Tom", null, "Bob");
+        names.stream().filter(i->Objects.nonNull(i)).forEach(System.out::println);
+
+        record Person(String name, int age) {}
+        List<Person> people = List.of(new Person("Alice", 30));
+        people.stream().map(Person::name).forEach(System.out::println);
 
 
 
