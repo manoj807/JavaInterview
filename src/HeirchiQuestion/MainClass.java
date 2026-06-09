@@ -6,8 +6,8 @@ public class MainClass
         SupperClass1 childClass1 = new ChildClass1();
         childClass1.overrideMethod();
 
-        SupperClass1 supperClass1= new SupperClass1();
-        ((ChildClass1) supperClass1).overrideMethod();
+        //SupperClass1 supperClass1= new SupperClass1();
+       // ((ChildClass1) supperClass1).overrideMethod();
 
 
     }

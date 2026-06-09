@@ -13,6 +13,7 @@ public class StreamsUtils
 
 
 
+
     public static List<Employee> getEmployeeList()
     {
         return List.of(
@@ -100,7 +101,7 @@ public class StreamsUtils
     public static List<Integer> getEvenIndexList(List<Integer> list)
     {
 
-        return IntStream.range(0, list.size()).filter(i -> i % 2 == 0).mapToObj(list::get).toList();
+        return IntStream.range(0, list.size()).filter(i -> i % 2 == 0).mapToObj(list::get).collect(Collectors.toList());
     }
 
     public static  String firstLimitcharacters(String strs, int limit)
@@ -166,7 +167,7 @@ public class StreamsUtils
    {
       // return list.stream().filter(n->n%2==0).reduce(0,Integer::sum);
 
-       return list.stream().filter(n->n%2==0).mapToInt(Integer::intValue).sum();
+       return list.stream().filter(n->n%2==0).mapToInt(i->i.intValue()).sum();
 
    }
 
@@ -334,11 +335,11 @@ public class StreamsUtils
         //int total = s.chars().filter(Character::isDigit).map(i->Integer.valueOf(String.valueOf(i))).sum();
         int total = s.chars().filter(Character::isDigit).mapToObj(c -> Integer.parseInt(String.valueOf(c))).reduce(0, (a,b)->a+b);
 
-
-       List<Character> chList= s.chars().mapToObj(c->(char)c).filter(c->s.indexOf(c)!=s.lastIndexOf(c)).distinct().collect(Collectors.toList());
+        List<Character> chList= s.chars().mapToObj(c->(char)c).filter(c->s.indexOf(c)!=s.lastIndexOf(c)).distinct().collect(Collectors.toList());
 
         List<Object> mixed = List.of(1, "a", 2, "b");
         List<Integer> list1= mixed.stream().filter(o -> o instanceof Integer).map(item-> (Integer) item).collect(Collectors.toList());
+        List<Integer> list122= mixed.stream().filter(o -> o instanceof Integer).map(item-> Integer.parseInt(String.valueOf(item))).collect(Collectors.toList());
 
        // String str = "abc";
 //        List<String> chars = str.chars().mapToObj(c -> String.valueOf((char)c)).toList();
@@ -424,7 +425,11 @@ public class StreamsUtils
         Map<String, Integer> map11 = names.stream()
                 .collect(Collectors.toMap(Function.identity(), String::length));
 
+
+
         List<Integer> l11 = List.of(1, 2, 3, 4);
+
+
         Optional<Integer> secondMax = l11.stream()
                 .distinct()
                 .sorted(Comparator.reverseOrder())
@@ -518,6 +523,13 @@ public class StreamsUtils
 
         List<Object> mixed = List.of(1, "a", 2, "b");
         mixed.stream().filter(o -> o instanceof Integer).map(i-> (Integer)i).collect(Collectors.toList());
+
+        Map<String, Integer> map = Map.of("a", 3, "b", 1);
+       Map<String, Integer> mmpp= map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+
 
 
 

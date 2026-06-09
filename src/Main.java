@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -93,6 +95,8 @@ public class Main {
         List<Integer> list11 = List.of(2, 3, -4, 5, 16, 17, 19, 20);
         boolean noneNeg = list11.stream().noneMatch(n -> n < 0);
         System.out.println("noneNeg:::"+noneNeg);
+        int [] num  = {1,2,3,1,2,3, 4};
+        Map<Integer, Long> ppppp = Arrays.stream(num).boxed().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
 
 
 
